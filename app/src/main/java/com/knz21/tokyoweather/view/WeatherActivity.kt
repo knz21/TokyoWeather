@@ -27,6 +27,7 @@ class WeatherActivity : AppCompatActivity(), WeatherViewContract {
 
     override fun setWeather(weather: Weather) {
         binding.description.text = weather.description.text
+        binding.refresh.isRefreshing = false
         setForecasts(weather.forecasts)
     }
 

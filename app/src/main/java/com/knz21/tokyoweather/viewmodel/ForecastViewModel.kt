@@ -1,8 +1,5 @@
 package com.knz21.tokyoweather.viewmodel
 
-import android.databinding.BindingAdapter
-import android.widget.ImageView
-import com.bumptech.glide.Glide
 import com.knz21.tokyoweather.model.Forecast
 
 class ForecastViewModel(val forecast: Forecast) {
@@ -11,9 +8,4 @@ class ForecastViewModel(val forecast: Forecast) {
     val min: String get() = "最低気温: ${forecast.temperature.min.text()}"
 
     private fun Forecast.Temperature.Temp?.text(): String = this?.let { "${it.celsius}℃" } ?: "---"
-}
-
-@BindingAdapter("imageUrl")
-fun ImageView.loadImage(url: String?) {
-    Glide.with(context).load(url).into(this)
 }

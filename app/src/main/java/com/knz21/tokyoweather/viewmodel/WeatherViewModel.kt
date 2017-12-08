@@ -15,4 +15,6 @@ class WeatherViewModel(private val contract: WeatherViewContract, private val ap
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { weather, _ -> weather?.let { contract.setWeather(it) } }
     }
+
+    fun onRefresh() { getWeather() }
 }
