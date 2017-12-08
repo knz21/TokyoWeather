@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.knz21.tokyoweather.R
 import com.knz21.tokyoweather.api.WeatherApiService
+import com.knz21.tokyoweather.common.formattedDescription
 import com.knz21.tokyoweather.contract.WeatherViewContract
 import com.knz21.tokyoweather.databinding.ActivityWeatherBinding
 import com.knz21.tokyoweather.di.ApplicationModule
@@ -26,8 +27,7 @@ class WeatherActivity : AppCompatActivity(), WeatherViewContract {
     }
 
     override fun setWeather(weather: Weather) {
-        binding.description.text = weather.description.text
-                .replace("\n", "").replace("【", "\n\n【").replace("】", "】\n")
+        binding.description.text = weather.description.text.formattedDescription()
         binding.refresh.isRefreshing = false
         setForecasts(weather.forecasts)
     }
