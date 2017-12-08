@@ -11,14 +11,14 @@ fun ImageView.loadImage(url: String?) {
     Glide.with(context).load(url).into(this)
 }
 
-@BindingAdapter("onRefresh")
-fun SwipeRefreshLayout.setRefreshListener(listener: SwipeRefreshLayout.OnRefreshListener) {
-    setOnRefreshListener(listener)
-}
-
 @BindingAdapter("colors")
 fun SwipeRefreshLayout.setColors(@ColorRes vararg colorResIds: Int) {
     setColorSchemeResources(*colorResIds)
+}
+
+@BindingAdapter("onRefresh")
+fun SwipeRefreshLayout.setRefreshListener(listener: SwipeRefreshLayout.OnRefreshListener) {
+    setOnRefreshListener(listener)
 }
 
 fun String.formattedDescription(): String = replace("\n", "").replace("【", "\n\n【").replace("】", "】\n")
