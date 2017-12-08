@@ -5,7 +5,7 @@
     <data>
 
         <variable
-            name="viewmodel"
+            name="viewModel"
             type="com.knz21.tokyoweather.viewmodel.WeatherViewModel"/>
     </data>
 
@@ -14,8 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
-        bind:colors="@{viewmodel.colors}"
-        bind:onRefresh="@{viewmodel::getWeather}">
+        bind:colors="@{viewModel.colors}"
+        bind:onRefresh="@{viewModel::getWeather}">
 
         <ScrollView
             android:layout_width="wrap_content"
@@ -52,6 +52,10 @@
                 </LinearLayout>
 
                 <TextView
+                    style="@style/AnnounceText"
+                    android:text="@{viewModel.time}"/>
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
@@ -65,11 +69,11 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:lineSpacingMultiplier="1.2"
-                    android:text="@{viewmodel.description}"/>
+                    android:text="@{viewModel.description}"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    style="@style/AnnounceText"
+                    android:text="@{viewModel.descTime}"/>
             </LinearLayout>
         </ScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>

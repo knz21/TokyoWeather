@@ -21,4 +21,14 @@ fun SwipeRefreshLayout.setRefreshListener(listener: SwipeRefreshLayout.OnRefresh
     setOnRefreshListener(listener)
 }
 
+fun String.formattedDateTime(): String = split("T").run {
+    "${getOrNull(0)?.run { formattedDate() } ?: ""} ${getOrNull(1)?.run { formattedTime() } ?: ""}"
+}
+
+fun String.formattedDate(): String = split("-").let { "${it[0]}年${it[1]}月${it[2]}日" }
+
+fun String.formattedTime(): String = split(":").let { "${it[0]}時${it[1]}分" }
+
+fun String.announced(): String = "${this} 発表"
+
 fun String.formattedDescription(): String = replace("\n", "").replace("【", "\n\n【").replace("】", "】\n")

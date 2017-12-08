@@ -22,7 +22,7 @@ class WeatherActivity : AppCompatActivity(), WeatherViewContract {
         super.onCreate(savedInstanceState)
         DaggerApplicationComponent.builder().applicationModule(ApplicationModule()).build().inject(this)
         setContentView(R.layout.activity_weather)
-        binding.viewmodel = WeatherViewModel(this, weatherApiService).apply { getWeather() }
+        binding.viewModel = WeatherViewModel(this, weatherApiService).apply { getWeather() }
     }
 
     override fun setWeather(weather: Weather) {
