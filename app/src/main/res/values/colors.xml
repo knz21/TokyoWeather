@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#4893F0</color>
     <color name="colorAccent">#F060E9</color>
     <color name="announceText">#999999</color>
+    <color name="reload_button">#6f6f6f</color>
+    <color name="reload_button_pressed">#f6f6f6</color>
 </resources>

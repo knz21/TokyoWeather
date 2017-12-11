@@ -28,7 +28,9 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/selector_reload_button"
                 android:onClick="@{viewModel::reload}"
+                android:padding="4dp"
                 android:src="@drawable/ic_refresh_black_64dp"
                 android:visibility="@{viewModel.reloadVisibility}"/>
         </FrameLayout>
