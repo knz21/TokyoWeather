@@ -22,12 +22,15 @@ class WeatherActivity : AppCompatActivity(), WeatherViewContract {
         super.onCreate(savedInstanceState)
         DaggerApplicationComponent.builder().applicationModule(ApplicationModule()).build().inject(this)
         setContentView(R.layout.activity_weather)
-        binding.viewModel = WeatherViewModel(this, weatherApiService).apply { getWeather() }
+        binding.viewModel = WeatherViewModel(this, weatherApiService).apply { load() }
     }
 
     override fun setWeather(weather: Weather) {
-        binding.refresh.isRefreshing = false
         setForecasts(weather.forecasts)
+    }
+
+    override fun removeRefreshing() {
+        binding.refresh.isRefreshing = false
     }
 
     private fun setForecasts(forecasts: List<Forecast>) {

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">東京の天気</string>
     <string name="description">概況</string>
+    <string name="reload">再読み込み</string>
 </resources>
