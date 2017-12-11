@@ -50,6 +50,7 @@ class WeatherViewModel(private val contract: WeatherViewContract, private val ap
         reloadVisibility.set(View.VISIBLE)
     }
 
+    @Suppress("unused_parameter")
     fun reload(v: View) {
         progressVisibility.set(View.VISIBLE)
         reloadVisibility.set(View.GONE)
