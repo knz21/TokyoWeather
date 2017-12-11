@@ -9,44 +9,41 @@
             type="com.knz21.tokyoweather.viewmodel.WeatherViewModel"/>
     </data>
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/refresh"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
-        bind:colors="@{viewModel.colors}"
-        bind:onRefresh="@{viewModel::load}">
+        android:background="@android:color/white">
 
         <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingBottom="48dp">
 
-            <FrameLayout
+            <ProgressBar
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:visibility="@{viewModel.progressVisibility}"/>
+
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingBottom="48dp">
+                android:onClick="@{viewModel::reload}"
+                android:src="@drawable/ic_refresh_black_64dp"
+                android:visibility="@{viewModel.reloadVisibility}"/>
+        </FrameLayout>
 
-                <ProgressBar
-                    android:id="@+id/progress"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:visibility="@{viewModel.progressVisibility}"/>
-
-                <Button
-                    android:id="@+id/reload"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="@{viewModel::reload}"
-                    android:text="@string/reload"
-                    android:visibility="@{viewModel.reloadVisibility}"/>
-            </FrameLayout>
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.contentVisibility}"
+            bind:colors="@{viewModel.colors}"
+            bind:onRefresh="@{viewModel::load}">
 
             <ScrollView
-                android:id="@+id/content"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="@{viewModel.contentVisibility}">
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -102,6 +99,6 @@
                         android:text="@{viewModel.descTime}"/>
                 </LinearLayout>
             </ScrollView>
-        </FrameLayout>
-    </android.support.v4.widget.SwipeRefreshLayout>
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </FrameLayout>
 </layout>
